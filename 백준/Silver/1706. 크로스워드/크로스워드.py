@@ -1,41 +1,50 @@
-# R: 퍼즐의 줄 개수, C: 각 줄의 개수
-# 2 <= R, C <= 20
-R, C = map(int, input().split())
-crosswords = [list(input()) for _ in range(R)]
+def main():
+    # R: 퍼즐의 줄 개수, C: 각 줄의 개수
+    # 2 <= R, C <= 20
+    R, C = map(int, input().split())
+    crosswords = [list(input()) for _ in range(R)]
 
-word_list = []
-# 가로로 되어있는 단어 추출
-for crossword in crosswords:
-    # 단어를 만들기 위한 word 초기화
-    word = ''
-    idx = 0
-    while True:
-        if idx == C:
-            break
-        if crossword[idx] == '#':
-            if len(word) >= 2:
-                word_list.append(word)
-            idx += 1
-            word = ''
-            continue
-        word += crossword[idx]
-        idx += 1
-    if len(word) >= 2:
-        word_list.append(word)
+    # word_list: 가능한 모든 단어를 담아낼 리스트
+    word_list = []
 
-# 세로로 되어있는 단어 추출
-# R: 4, C: 5
-for i in range(C):
-    word = ''
-    for j in range(R):
-        if crosswords[j][i] == '#':
-            if len(word) >= 2:
-                word_list.append(word)
-            word = ''
-            continue
-        word += crosswords[j][i]
-    if len(word) >= 2:
-        word_list.append(word)
+    # 가로로 되어있는 단어 추출
+    for crossword in crosswords:
+        # 단어를 만들기 위한 word 초기화
+        word = ''
+        # 가로 알파벳을 돌면서 확인
+        for alphabet in crossword:
+            # 만약 #이 나타나는 경우
+            if alphabet == '#':
+                # 지금까지 만들어진 단어가 2자리 이상일 경우 list에 추가
+                if len(word) >= 2:
+                    word_list.append(word)
+                # #을 지나고 다시 word를 초기화
+                word = ''
+                continue
+            # 만약 #이 아닌 경우에는 word에 알파벳 더해서 단어 형성
+            word += alphabet
+        # 만들어진 단어가 2자리 이상일 경우 list에 추가
+        if len(word) >= 2:
+            word_list.append(word)
 
-word_list.sort()
-print(word_list[0])
+    # 세로로 되어있는 단어 추출
+    # 가로와 마찬가지로 진행하되, 행이 아니라 열 순서로 진행
+    for i in range(C):
+        word = ''
+        for j in range(R):
+            if crosswords[j][i] == '#':
+                if len(word) >= 2:
+                    word_list.append(word)
+                word = ''
+                continue
+            word += crosswords[j][i]
+        if len(word) >= 2:
+            word_list.append(word)
+
+    # 가능한 모든 단어를 사전순서대로 정렬
+    word_list.sort()
+    print(word_list[0])
+
+
+if __name__ == "__main__":
+    main()
