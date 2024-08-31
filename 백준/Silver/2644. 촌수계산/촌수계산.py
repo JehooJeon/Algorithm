@@ -1,15 +1,18 @@
 def dfs(r_x, r_y, count):
-    # 촌수 +1
-    count += 1
+    global result
     # 방문 여부 처리
     visited[r_x] = 1
-
+    
+    # 만약 두 사람의 번호가 만나면, 촌수를 결과 리스트에 추가
     if r_x == r_y:
-        result.append(count)
-
+        result = count
+    
+    # 촌수 계산 대상의 자식들
     for i in graph[r_x]:
+        # 만약 방문한 적이 없다면, dfs 실행
         if not visited[i]:
-            dfs(i, r_y, count)
+            # dfs 실행 시 촌수 + 1
+            dfs(i, r_y, count + 1)
 
 # n: 전체 사람의 수
 n = int(input())
@@ -22,16 +25,20 @@ graph = [[] for _ in range(n+1)]
 # visited: 방문 여부 리스트
 visited = [0] * (n+1)
 
+# 입력 요소들을 받아서 부모-자식 관계 리스트에 저장
 for i in range(m):
     x, y = map(int, input().split())
     graph[x].append(y)
     graph[y].append(x)
 
-result = []
+# result: 결과를 저장할 리스트
+result = 0
 
+# r_x와 r_y의 촌수 계산을 위해 dfs 실행
 dfs(r_x, r_y, 0)
 
-if len(result) == 0:
+# 만약 촌수 계산 결과가 없다면, -1
+if result == 0:
     print(-1)
 else:
-    print(result[0] - 1)
+    print(result)
