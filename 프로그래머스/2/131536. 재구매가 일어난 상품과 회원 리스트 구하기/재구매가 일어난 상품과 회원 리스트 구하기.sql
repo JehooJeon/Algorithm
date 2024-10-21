@@ -5,7 +5,8 @@ SELECT
 FROM 
     online_sale
 GROUP BY 
-    1, 2
+    user_id, 
+    product_id
 HAVING 
     COUNT(*) >= 2
 ORDER BY 
