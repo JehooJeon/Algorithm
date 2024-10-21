@@ -12,4 +12,3 @@ GROUP BY
     quarter
 ORDER BY
     quarter ASC;
-         
