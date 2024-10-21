@@ -5,8 +5,8 @@ SELECT
     ROUND(AVG(pm_val2), 2) AS "pm2.5"
 FROM
     air_pollution
-WHERE
-    location2 = "수원"
+WHERE 1 = 1
+    AND location2 = "수원"
 GROUP BY 
     YEAR(ym)
 ORDER BY
