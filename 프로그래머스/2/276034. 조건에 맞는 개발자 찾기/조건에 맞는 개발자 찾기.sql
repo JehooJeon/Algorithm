@@ -7,15 +7,17 @@ SELECT
 FROM
     developers
 WHERE 1 = 1
-    AND skill_code & (SELECT code
+    AND skill_code & (SELECT 
+                          code
                       FROM 
-                        skillcodes
+                          skillcodes
                       WHERE
-                        name = 'Python')
-    OR skill_code & (SELECT code
-                      FROM 
-                        skillcodes
-                      WHERE
-                        name = 'C#')
+                          name = 'Python')
+    OR skill_code & (SELECT 
+                         code
+                     FROM 
+                         skillcodes
+                     WHERE
+                         name = 'C#')
 ORDER BY
     id ASC;
