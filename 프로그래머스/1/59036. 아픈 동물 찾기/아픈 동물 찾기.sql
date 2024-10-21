@@ -4,7 +4,7 @@ SELECT
     name
 FROM 
     animal_ins
-WHERE 
-    intake_condition = "Sick"
+WHERE 1 = 1
+    AND intake_condition = "Sick"
 ORDER BY 
     animal_id ASC;
