@@ -14,4 +14,3 @@ GROUP BY
 ORDER BY
     score DESC
 LIMIT 1;
-    
