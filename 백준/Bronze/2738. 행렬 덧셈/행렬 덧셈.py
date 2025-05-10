@@ -5,10 +5,10 @@ def matrix_sum():
     A = list(list(map(int, sys.stdin.readline().split())) for _ in range(N))
     B = list(list(map(int, sys.stdin.readline().split())) for _ in range(N))
     for i in range(N):
+        result = []
         for j in range(M):
-            print(A[i][j] + B[i][j], end=' ')
-        if i != N - 1:
-            print()
+            result.append(str(A[i][j] + B[i][j]))
+        print(' '.join(result))
 
 def main():
     matrix_sum()
