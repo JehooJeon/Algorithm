@@ -2,16 +2,11 @@
 # X : 정수
 # A에서 X보다 작은 수를 모두 출력
 def solution(N, X, A):
-    answer = []
-
     for a in A:
         if a < X:
-            answer.append(a)
-    
-    return answer        
+            print(a, end=' ')
+    return       
 
 N, X = map(int, input().split())
 A = list(map(int, input().split()))
-answer = solution(N, X, A)
-for i in answer:
-    print(i, end=' ')
+solution(N, X, A)
