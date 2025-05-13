@@ -6,7 +6,6 @@ def main():
             break
 
         stack = []
-        balanced = True
 
         for s in sentence:
             if s == '(' or s == '[':
@@ -15,16 +14,16 @@ def main():
                 if stack and stack[-1] == '(':
                     stack.pop()
                 else:
-                    balanced = False
+                    stack.append(')')
                     break
             elif s == ']':
                 if stack and stack[-1] == '[':
                     stack.pop()
                 else:
-                    balanced = False
+                    stack.append(']')
                     break
 
-        if balanced and not stack:
+        if not stack:
             print('yes')
         else:
             print('no')
