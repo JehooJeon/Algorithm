@@ -6,8 +6,6 @@ def mean(arr):
 
 def median(arr):
     arr.sort()
-    if len(arr) % 2 == 0:
-        return mean([arr[len(arr) // 2 - 1], arr[len(arr) // 2]])
     return arr[len(arr) // 2]
 
 def mode(arr):
