@@ -1,6 +1,6 @@
 import sys
 
-def lan_line_cut(K, lan_lines):
+def max_line_cut(K, lan_lines):
     left = 1
     right = max(lan_lines)
     max_len = 0
@@ -20,7 +20,7 @@ def lan_line_cut(K, lan_lines):
 def main():
     N, K = map(int, input().split())
     lan_lines = [int(sys.stdin.readline()) for _ in range(N)]
-    print(lan_line_cut(K, lan_lines))
+    print(max_line_cut(K, lan_lines))
 
 if __name__ == "__main__":
     main()
