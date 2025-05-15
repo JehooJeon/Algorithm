@@ -7,7 +7,7 @@ def main():
     cnt = 1
 
     for _ in range(n):
-        seq = int(input())
+        seq = int(sys.stdin.readline())
 
         while cnt <= seq:
             stack.append(cnt)
