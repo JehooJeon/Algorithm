@@ -5,16 +5,11 @@ def main():
 
     unheard_names = set([sys.stdin.readline().strip() for _ in range(N)])
     unseen_names = set([sys.stdin.readline().strip() for _ in range(M)])
-    result = []
+    
+    result = sorted(unheard_names & unseen_names)
 
-    for name in unheard_names:
-        if name in unseen_names:
-            result.append(name)
-
-    result.sort()
     print(len(result))
-    for r in result:
-        print(r)
+    print('\n'.join(result))
 
 if __name__ == "__main__":
     main()
