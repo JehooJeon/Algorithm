@@ -2,16 +2,27 @@ import sys
 
 def main():
     n = int(input())
-    desired = list(sys.stdin.readline() for _ in range(n))
     stack = []
-    start = 1
+    result = []
+    cnt = 1
 
-    for d in desired:
-        if start == n + 1:
-            break
+    for _ in range(n):
+        seq = int(sys.stdin.readline())
+
+        while cnt <= seq:
+            stack.append(cnt)
+            result.append('+')
+            cnt += 1
         
-        if start == d:
-            stack
+        if stack[-1] == seq:
+            stack.pop()
+            result.append('-')
+
+    if stack:
+        print('NO')
+    else:
+        for r in result:
+            print(r)
 
 if __name__ == "__main__":
     main()
