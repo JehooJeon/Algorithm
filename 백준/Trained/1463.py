@@ -1,24 +1,12 @@
 def dp(N):
-    if N == 1:
-        return 0
-    
-    if N <= 3:
-        return 1
-    
     arr = [0] * (N + 1)
-    arr[2], arr[3] = 1, 1
 
-    idx = 4
-    while idx <= N:
-        if arr[idx] % 3 == 0:
-            arr[idx] = min(arr[idx - 1], arr[idx // 3]) + 1
-        elif arr[idx] % 2 == 0:
-            arr[idx] = min(arr[idx - 1], arr[idx // 2]) + 1
-        elif arr[idx] % 3 == 0 and arr[idx] % 2 == 0:
-            arr[idx] = min(arr[idx - 1], arr[idx // 2], arr[idx // 3]) + 1
-        else:
-            arr[idx] = arr[idx - 1]
-        idx += 1
+    for i in range(2, N + 1):
+        arr[i] = arr[i - 1] + 1
+        if i % 2 == 0:
+            arr[i] = min(arr[i], arr[i // 2] + 1)
+        if i % 3 == 0:
+            arr[i] = min(arr[i], arr[i // 3] + 1)        
 
     return arr[N]
 
